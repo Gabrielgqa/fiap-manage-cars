@@ -8,6 +8,7 @@ import { AuthenticateController } from './controllers/authenticate.controller';
 import { CreateCarController } from './controllers/create-car.controller';
 import { GetListCarsController } from './controllers/get-list-cars.controller';
 import { GetUnsoldCarsController } from './controllers/get-unsold-cars.controller';
+import { UpdateSoldCarController } from './controllers/update-sold-car.controller';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -16,7 +17,7 @@ import { GetUnsoldCarsController } from './controllers/get-unsold-cars.controlle
   }),
   AuthModule
 ],
-  controllers: [CreateAccountController, AuthenticateController, CreateCarController, GetListCarsController, GetUnsoldCarsController],
+  controllers: [CreateAccountController, AuthenticateController, CreateCarController, GetListCarsController, GetUnsoldCarsController, UpdateSoldCarController],
   providers: [PrismaService],
 })
 export class AppModule {}
