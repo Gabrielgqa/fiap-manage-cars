@@ -1,5 +1,6 @@
 @baseUrl = http://localhost:3333
 @token = {{autenticate.response.body.access_token}}
+@id = 25da946a-69f1-4f3f-a80a-5fa0ac7f5fa1
 
 
 # @name create_account
@@ -37,3 +38,29 @@ Authorization: Bearer {{token}}
     "color": "Vermelho",
     "price": 100000
 }
+
+###
+
+# @name list_cars
+GET {{baseUrl}}/cars
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name list_cars_unsold
+GET {{baseUrl}}/cars/unsold
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name update_car
+PUT {{baseUrl}}/cars/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "cpfBuyer": "06108408510"
+}
+
