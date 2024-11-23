@@ -37,3 +37,17 @@ Authorization: Bearer {{token}}
     "color": "Vermelho",
     "price": 100000
 }
+
+###
+
+# @name list_cars
+GET {{baseUrl}}/cars
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name list_cars_unsold
+GET {{baseUrl}}/cars/unsold
+Content-Type: application/json
+Authorization: Bearer {{token}}
