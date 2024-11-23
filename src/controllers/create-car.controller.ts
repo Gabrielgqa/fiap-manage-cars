@@ -1,20 +1,43 @@
-import { Controller, Post, Body, HttpCode, UseGuards, Req } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, UsePipes } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Request } from 'express';
-import { CurrentUser } from 'src/auth/current-user-decorator';
-import { UserPayload } from 'src/auth/jwt.strategy';
+import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { z } from 'zod';
+
+const createCarBodySchema = z.object({
+    mark: z.string(),
+    model: z.string(),
+    year: z.number(),
+    color: z.string(),
+    price: z.number(),
+})
+
+type CreateCarBody = z.infer<typeof createCarBodySchema>
+
 
 @Controller('/cars')
 @UseGuards(AuthGuard('jwt'))
 export class CreateCarController {
-    constructor() {}
+    constructor(private prisma: PrismaService) {}
 
     @Post()
-    async handle(@CurrentUser() user: UserPayload) {
-        console.log(user);
+    @UsePipes(new ZodValidationPipe(createCarBodySchema))
+    async handle(@Body() body: CreateCarBody) {
+        
+            const { mark, model, year, color, price } = createCarBodySchema.parse(body);
+            
+            
+            await this.prisma.car.create({
+                data: {
+                    mark,
+                    model,
+                    year,
+                    color,
+                    price
+                }
+            })
 
-        return 'ok';
+            return 'ok';
     }
 }
 

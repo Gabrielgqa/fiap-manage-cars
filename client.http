@@ -29,3 +29,11 @@ Content-Type: application/json
 POST {{baseUrl}}/cars
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+{
+    "mark": "Ford",
+    "model": "Mustang",
+    "year": 1969,
+    "color": "Vermelho",
+    "price": 100000
+}
