@@ -1,6 +1,7 @@
 @baseUrl = http://localhost:3333
 @token = {{autenticate.response.body.access_token}}
 @id = 25da946a-69f1-4f3f-a80a-5fa0ac7f5fa1
+@IdToDelete = 77a15c93-7ef2-4ab8-a64b-ea0be5b525e2
 
 
 # @name create_account
@@ -64,3 +65,10 @@ Authorization: Bearer {{token}}
     "cpfBuyer": "06108408510"
 }
 
+
+###
+
+# @name delete_car
+DELETE {{baseUrl}}/cars/{{IdToDelete}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
