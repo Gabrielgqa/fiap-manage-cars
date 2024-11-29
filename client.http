@@ -57,7 +57,7 @@ Authorization: Bearer {{token}}
 ###
 
 # @name update_car
-PUT {{baseUrl}}/cars/{{id}}
+PUT {{baseUrl}}/cars/sold/{{id}}
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
