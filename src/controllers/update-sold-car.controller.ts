@@ -3,7 +3,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 
-@Controller('/cars/:id')
+@Controller('/cars/sold/:id')
 @UseGuards(AuthGuard('jwt'))
 export class UpdateSoldCarController {
     constructor(private prisma: PrismaService) {}
